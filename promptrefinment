@@ -1,0 +1,113 @@
+```python
+# prompt_refinement.py
+# Project: Refine Input Prompts to Effectively Guide Generative AI Models
+# Author: Student Project
+
+def analyze_prompt(prompt):
+    """
+    Analyze the prompt and identify missing details.
+    """
+    issues = []
+
+    if len(prompt.split()) < 5:
+        issues.append("Prompt is too short.")
+
+    if "for" not in prompt.lower():
+        issues.append("Target audience not specified.")
+
+    return issues
+
+
+def refine_prompt(prompt):
+    """
+    Refine the input prompt by adding context and instructions.
+    """
+
+    refined_prompt = f"""
+Act as an expert AI assistant.
+
+Task:
+{prompt}
+
+Instructions:
+1. Provide a clear and detailed explanation.
+2. Use proper formatting with headings and bullet points.
+3. Include examples where applicable.
+4. Ensure accuracy and relevance.
+5. Conclude with a summary.
+
+Generate the best possible response.
+"""
+
+    return refined_prompt.strip()
+
+
+def generate_response(refined_prompt):
+    """
+    Simulated AI response generation.
+    Replace with an actual AI API if required.
+    """
+
+    return (
+        "AI Response Generated Successfully.\n\n"
+        "The refined prompt contains additional context, "
+        "instructions, and formatting requirements that help "
+        "improve the quality of generated outputs."
+    )
+
+
+def evaluate_output(output):
+    """
+    Simple evaluation function.
+    """
+
+    score = 95
+
+    if len(output) < 50:
+        score = 70
+
+    return score
+
+
+def main():
+
+    print("=" * 60)
+    print("PROMPT REFINEMENT SYSTEM")
+    print("=" * 60)
+
+    user_prompt = input("Enter your prompt: ")
+
+    print("\nAnalyzing Prompt...")
+    issues = analyze_prompt(user_prompt)
+
+    if issues:
+        print("\nIssues Found:")
+        for issue in issues:
+            print("-", issue)
+    else:
+        print("No issues found.")
+
+    print("\nRefining Prompt...")
+    refined_prompt = refine_prompt(user_prompt)
+
+    print("\nRefined Prompt:")
+    print("-" * 60)
+    print(refined_prompt)
+
+    print("\nGenerating Response...")
+    output = generate_response(refined_prompt)
+
+    print("\nGenerated Output:")
+    print("-" * 60)
+    print(output)
+
+    score = evaluate_output(output)
+
+    print("\nOutput Quality Score:", score, "%")
+
+    print("\nProcess Completed Successfully.")
+
+
+if __name__ == "__main__":
+    main()
+```
